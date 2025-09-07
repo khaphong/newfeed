@@ -83,26 +83,26 @@ const HomePage: React.FC = () => {
             <section className="main-section">
               <SectionHeader title="ĐÁNG CHÚ Ý" />
               
-              <div className="main-articles-list">
+              <div className="responsive-grid">
                 {mainArticles.map((article) => (
                   <Link 
                     key={article.id} 
                     to="/article/xu-huong-cong-nghe-2024-ai-machine-learning" 
-                    className="main-article-item"
+                    className="article-card"
                   >
                     <img 
                       src={article.imageUrl}
                       alt={article.title}
-                      className="main-article-image"
+                      className="article-image"
                     />
-                    <div className="main-article-content">
-                      <h3 className="main-article-title">
+                    <div className="article-content">
+                      <h3 className="article-title">
                         {article.title}
                       </h3>
-                      <p className="main-article-excerpt">
+                      <p className="article-excerpt">
                         {article.excerpt}
                       </p>
-                      <div className="main-article-meta">
+                      <div className="article-meta">
                         {article.date}
                       </div>
                     </div>
