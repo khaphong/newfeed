@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Frontend React App
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000/api/v2
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # Backend Wagtail (placeholder for when you have Wagtail setup)
+  backend:
+    # This would be your Wagtail Django app
+    # image: your-wagtail-app:latest
+    # For now, you can use a placeholder or comment this out
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    networks:
+      - app-network
+    # volumes:
+    #   - ./backend:/app
+    # environment:
+    #   - DATABASE_URL=postgresql://user:password@db:5432/wagtail
+    # depends_on:
+    #   - db
+
+  # Database (PostgreSQL for Wagtail)
+  # db:
+  #   image: postgres:13
+  #   environment:
+  #     - POSTGRES_DB=wagtail
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# volumes:
+#   postgres_data:
